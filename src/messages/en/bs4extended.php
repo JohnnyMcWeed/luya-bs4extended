@@ -2,7 +2,7 @@
 
 return [
     'block_parallax.module_name' => 'Parallax',
-    'block_parallax.title' => 'Parallax',
+    'block_parallax.title' => 'Title',
     'block_parallax.caption' => 'Caption',
     'block_parallax.image' => 'Image',
     'block_parallax.alt' => 'Alt',
@@ -32,4 +32,5 @@ return [
     'block_parallax.config_afterSetup_desc' => 'Callback which is called after setup',
     'block_parallax.config_afterDestroy' => 'After Destroy',
     'block_parallax.config_afterDestroy_desc' => 'Callback which is called after destroy',
+    'block_parallax.config_row' => 'Row'
 ];

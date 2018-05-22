@@ -63,7 +63,7 @@ class ParallaxBlock extends Bs4extendedBlock
             'cfgs' => [
                 [ 'var' => 'speed', 'type' => self::TYPE_DECIMAL, 'label' => Module::t('block_parallax.config_speed'), 'initvalue' => 0.2 ],
                 [ 'var' => 'bleed', 'type' => self::TYPE_NUMBER, 'label' => Module::t('block_parallax.config_bleed'), 'initvalue' => 50 ],
-                [ 'var' => 'zIndex', 'type' => self::TYPE_NUMBER, 'label' => Module::t('block_parallax.config_zIndex') ],
+                [ 'var' => 'zIndex', 'type' => self::TYPE_NUMBER, 'label' => Module::t('block_parallax.config_zIndex'), 'initvalue' => -100 ],
                 [ 'var' => 'posX', 'type' => self::TYPE_TEXT, 'label' => Module::t('block_parallax.config_posX'), 'initvalue' => 'center'],
                 [ 'var' => 'posY', 'type' => self::TYPE_TEXT, 'label' => Module::t('block_parallax.config_posY'), 'initvalue' => 'center'],
                 [ 'var' => 'overScrollFix', 'type' => self::TYPE_CHECKBOX, 'label' => Module::t('block_parallax.config_overScrollFix'), 'initvalue' => '1' ],
@@ -74,6 +74,7 @@ class ParallaxBlock extends Bs4extendedBlock
                 //[ 'var' => 'afterRender', 'type' => self::TYPE_NUMBER, 'label' => Module::t('block_parallax.config_afterRender') ],
                 //[ 'var' => 'afterSetup', 'type' => self::TYPE_NUMBER, 'label' => Module::t('block_parallax.config_afterSetup') ],
                 //[ 'var' => 'afterDestroy', 'type' => self::TYPE_NUMBER, 'label' => Module::t('block_parallax.config_afterDestroy') ],
+                [ 'var' => 'row', 'type' => self::TYPE_CHECKBOX, 'label' => Module::t('block_parallax.config_row'), 'initvalue' => 1],
             ]
         ];
     }
@@ -86,9 +87,13 @@ class ParallaxBlock extends Bs4extendedBlock
     public function getJsConfig()
     {
         return Json::encode([
-            'src' => BlockHelper::imageUpload($this->getVarValue('image'), false,true)->source,
+            'src' => !empty($this->getVarValue('image')) ? BlockHelper::imageUpload($this->getVarValue('image'), false,true)->source : null,
             'speed' => $this->getCfgValue('speed', 0.2),
-            'bleed' => $this->getCfgValue('bleed', 0)
+            'bleed' => $this->getCfgValue('bleed', 0),
+            'zIndex' => $this->getCfgValue( 'zIndex', -100),
+            'posX' => $this->getCfgValue( 'posX', 'center'),
+            'posY' => $this->getCfgValue( 'posY', 'center'),
+            'overScrollFix' => $this->getCfgValue( 'overScrollFix', 1) == 1 ? true : false,
         ]);
     }
 
@@ -98,7 +103,7 @@ class ParallaxBlock extends Bs4extendedBlock
     public function extraVars()
     {
         return [
-            //'image' => isset($item['image']) ? BlockHelper::imageUpload($item['image'], false, true) : null,
+            'image' => BlockHelper::imageUpload($this->getCfgValue('image'), false, true),
             'id' => md5($this->getEnvOption('blockId')),
             'jsConfig' => $this->getJsConfig()
         ];
