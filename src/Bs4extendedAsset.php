@@ -12,7 +12,7 @@ class Bs4extendedAsset extends \luya\web\Asset
     public $css = [];
 
     public $js = [
-
+        '/js/parallax.min.js'
     ];
 
     public $publishOptions = [
@@ -22,8 +22,7 @@ class Bs4extendedAsset extends \luya\web\Asset
         ]
     ];
 
-
     public $depends = [
-        'yii\web\JqueryAsset',
+        'luya\bootstrap4\Bootstrap4Asset'
     ];
 }
