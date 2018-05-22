@@ -5,7 +5,9 @@
 
 Contains bootstrap 4 extended frontend content:
 
-+ blocks
++ Blocks:
+
+  + [Parallax Block](https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha)
 
 ## Installation
 
@@ -14,5 +16,10 @@ WIP - Do not use yet
 For the installation of modules Composer is required.
 
 ```sh
-composer require johnnymcweed/luya-bs4extended
+composer require johnnymcweed/luya-bs4extended:dev-master
 ```
+
+## Blocks
+
+### [Parallax Block](https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha)
+
