@@ -1,9 +1,11 @@
 <?php
-
 namespace johnnymcweed\bs4extended\blocks;
 
-use luya\cms\frontend\blockgroups\ProjectGroup;
+use johnnymcweed\bs4extended\Bs4extendedBlock;
+use johnnymcweed\bs4extended\Module;
+use luya\cms\frontend\blockgroups\MediaGroup;
 use luya\cms\helpers\BlockHelper;
+use luya\helpers\Json;
 
 /**
  * Parallax Block.
@@ -52,17 +54,47 @@ class ParallaxBlock extends Bs4extendedBlock
     public function config()
     {
         return [
+            'vars' => [
+                ['var' => 'title', 'type' => self::TYPE_TEXT, 'label' => Module::t('block_carousel.title')],
+                ['var' => 'caption', 'type' => self::TYPE_TEXTAREA, 'label' => Module::t('block_carousel.caption')],
+                ['var' => 'image', 'type' => self::TYPE_IMAGEUPLOAD, 'label' => Module::t('block_carousel.image')],
+                ['var' => 'alt', 'type' => self::TYPE_TEXT, 'label' => Module::t('block_carousel.alt')],
+            ],
+            'cfgs' => [
+                
+            ]
         ];
     }
-    
+
     /**
-     * {@inheritDoc} 
+     * Build the json encoded javascript config
      *
-    */
+     * @return string
+     */
+    public function getJsConfig()
+    {
+        return Json::encode([]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function extraVars()
+    {
+        return [
+            'image' => BlockHelper::imageUpload($this->getVarValue('image'), false, true),
+            'id' => md5($this->getEnvOption('blockId')),
+            'jsConfig' => $this->getJsConfig()
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function admin()
     {
-        return '<h5 class="mb-3">Parallax</h5>' .
-            '<table class="table table-bordered">' .
-            '</table>';
+        return '{% if extras.image %}<div>
+              <img src="{{extras.image.source}}" class="img-fluid" />
+      </div>{% endif %}';
     }
 }

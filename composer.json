@@ -1,7 +1,7 @@
 {
     "name" : "johnnymcweed/luya-bs4extended",
-    "description" : "LUYA Bs4 Extended",
-    "type" : "luya-extension",
+    "description" : "LUYA Bootstrap 4 Extended Blocks - WIP",
+    "type" : "luya-extensions",
     "keywords" : ["luya-blocks", "luya"],
     "license": "MIT",
     "support" : {
