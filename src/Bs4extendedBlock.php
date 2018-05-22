@@ -7,7 +7,7 @@ use luya\cms\base\PhpBlock;
 /**
  * Base block for all bootstrap 4 extended blocks.
  * 
- * @author Basil Suter <basil@nadar.io>
+ * @author Alex Schmid <alex.schmid@stud.unibas.ch>
  */
 abstract class Bs4extendedBlock extends PhpBlock
 {

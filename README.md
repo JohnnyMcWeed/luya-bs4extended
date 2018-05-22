@@ -23,3 +23,9 @@ composer require johnnymcweed/luya-bs4extended:dev-master
 
 ### [Parallax Block](https://github.com/pixelcog/parallax.js/tree/v2.0.0-alpha)
 
+Place a parallax image on your cms pages
+
+### [Animate On Scroll](http://michalsnik.github.io/aos/)
+
+TBD
+
