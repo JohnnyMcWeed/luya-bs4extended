@@ -1,15 +1,9 @@
 {
     "name" : "johnnymcweed/luya-bs4extended",
     "description" : "LUYA Bs4 Extended",
-    "type" : "luya-extensions",
+    "type" : "luya-extension",
     "keywords" : ["luya-blocks", "luya"],
     "license": "MIT",
-    "authors" : [
-        {
-            "name" : "Alex Schmid",
-            "email" : "alex.schmid@stud.unibas.ch"
-        }
-    ],
     "support" : {
         "issues" : "https://github.com/johnnymcweed/luya-bs4extended/issues"
     },

@@ -4,6 +4,9 @@ namespace johnnymcweed\bs4extended;
 
 /**
  * Bs4Extended Module
+ * 
+ * When adding this module to your configuration the bootstrap4 block will be added to your
+ * cmsadministration by running the `import` command.
  *
  * @author Alex Schmid <alex.schmid@stud.unibas.ch>
  */
